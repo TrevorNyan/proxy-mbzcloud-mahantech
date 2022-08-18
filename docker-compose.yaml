@@ -1,0 +1,14 @@
+#combine 2 docker containers to work together.
+version: '3.6'
+services:
+  bmanager:
+    build: './mbm'
+    expose:
+      - '8000'
+
+  nginx:
+    build: './nginx'
+    ports:
+      - '80:80'
+    depends_on:
+      - 'bmanager'
